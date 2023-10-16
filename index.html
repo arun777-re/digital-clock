@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<style>
+    body{
+     background-color: black;
+    }
+   .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    /* background-color: black; */
+
+   }
+   .root{
+    font-size: 5rem;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    border: 2px solid red;
+    margin:10px auto;
+    /* margin-top: 556px; */
+    color:rgb(104 242 6);
+   }
+   .h1{
+    /* margin-bottom: 89px; */
+    color:rgb(104 242 6) ;
+   }
+</style>
+<div class="h1">
+<h1>Digital Clock</h1>
+    </div>
+    <div class="h1">
+        <h2 class="text-center">Enter here minute to change the color of background</h2>
+        <input type='number' class="form-control">
+    </div>
+    <div class="main">
+       
+
+       <div class="root" id="root">
+
+       </div> 
+       
+
+       
+
+    </div>
+</body>
+<script>
+   const clock = ()=>{
+     let date = new Date();
+     let h = date.getHours();
+     let m = date.getMinutes();
+     let s = date.getSeconds();
+     let session = "am";
+     let arr = document.querySelector('input').value;
+     if(m==arr){
+       document.body.style.backgroundColor = "grey"
+     }else{
+        document.body.style.backgroundColor = "black"
+     }
+     if(h>12){
+       h = 24-12;
+       session="pm";
+
+     }
+     if(h=="0"){
+        h=12;
+     }
+
+     h = (h<10)?"0" +h:h
+     m = (m<10)?"0" +m:m
+     s = (s<10)?"0" +s:s
+    
+     const time = h + ":" + m + ":" + s +session;
+     document.getElementById('root').innerHTML = time;
+   };
+   setInterval(()=>{
+    clock();
+   },1000)
+   
+</script>
+</html>
