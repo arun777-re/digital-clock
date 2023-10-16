@@ -23,12 +23,12 @@
 
    }
    .root{
-    font-size: 5rem;
+    font-size: 7rem;
     height: 100px;
     display: flex;
     justify-content: center;
     width: 900px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin:10px auto;
     /* margin-top: 556px; */
     color:rgb(104 242 6);
@@ -66,9 +66,19 @@
      let session = "am";
      let arr = document.querySelector('input').value;
      if(m==arr){
-       document.body.style.backgroundColor = "grey"
+       
+        // document.body.style.backgroundColor = "blue"
+       const speak=()=>{
+        let msg = new SpeechSynthesisUtterance("hello this is digital clock made by arun jamdagni");
+        speechSynthesis.speak(msg)
+       }
+       speak()
+       document.body.style.backgroundColor = "grey";
+       document.body.style.backgroundColor = "yellow"
      }else{
-        document.body.style.backgroundColor = "black"
+        document.body.style.backgroundColor ="black"
+        
+      
      }
      if(h>12){
        h = 24-12;
